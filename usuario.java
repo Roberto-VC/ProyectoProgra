@@ -2,9 +2,11 @@
 
 usuario.java
 Autores: Stefano Aragoni, Rebecca Smith, Roberto Vallecillos, Cayetano molina, Daniel Cabrera, Diego Ruiz
-Última modificación: 2020-09-11
+Última modificación: 2020-11-05
 
 ******************************************************************/
+
+import java.util.*;
 
 //se crea la clase
 class usuario{
@@ -15,6 +17,7 @@ class usuario{
   private int age = 0;
   private String usuario;
   private String pass;
+  private ArrayList<String> historial;
 
   private int nivelLec;
   private int nivelMat;
@@ -29,6 +32,7 @@ class usuario{
     this.pass = pass;
     this.nivelLec = nivelLec;
     this.nivelMat = nivelMat;
+    this.historial = new ArrayList<String>();
 
   }
 
@@ -61,6 +65,26 @@ class usuario{
   //getter que retorna el nombre de usuario. 
   public String getNombre(){
     return usuario;
+  }
+
+  //Método string que obtiene el historial completo
+  //En caso que no se encuentra alguna actividad, devuelve que no ha hecho alguna actividad
+  public String getHistorial(){
+    String r = "Historial: \n";
+    if(historial.size() == 0){
+      r += "Aun no ha hecho alguna actividad. \n";
+    }else{
+      for(int x = 0; x < historial.size(); x++){
+        String evento = historial.get(x);
+        r += evento + "\n";
+      }
+    }
+    return r;
+  }
+  
+  //Método que agrega información al historial
+  public void agregar(String evento){
+    historial.add(evento);
   }
 
 
